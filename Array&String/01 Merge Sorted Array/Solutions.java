@@ -1,29 +1,48 @@
 // Problem = https://leetcode.com/problems/merge-sorted-array/?envType=study-plan-v2&envId=top-interview-150
-
-// Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
-// Output: [1,2,2,3,5,6]
-// Explanation: The arrays we are merging are [1,2,3] and [2,5,6].
-// The result of the merge is [1,2,2,3,5,6] with the underlined elements coming from nums1.
-
-import java.util.*;
-
 class Solution {
-    public void merge(int[] nums1, int m, int[] nums2, int n) {
-        int[] res = new int[m+n];
-        int pointer1 = 0;
-        int pointer2 = 0;
+    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+        int length = m + n -1;
+        m--;
+        n--;
 
-        while (pointer1 < m) {
-            while (pointer2 < n) {
-                
+        while (length >= 0) {
+            if (m != -1 && n != -1) {
+                if (nums1[m] > nums2[n]) {
+                    nums1[length] = nums1[m];
+                    m--;
+                } else {
+                    nums1[length] = nums2[n];
+                    n--;
+                }
+            } else if (m != -1){
+                nums1[length] = nums1[m];
+                m--;
+            } else {
+                nums1[length] = nums2[n];
+                n--;
             }
+            length--;
         }
     }
 
     public static void main(String[] args) {
+        int[] nums1 = new int[]{1,2,3,0,0,0};
+        int[] nums2 = new int[]{2,5,6};
+        int m = 3;
+        int n = 3;
         
+        merge(nums1, m, nums2, n);
+        printArray(nums1);
+    }
+
+    public static void printArray(int[] nums){
+        for (int i : nums) {
+            System.out.print(i + ", ");
+        }
+        System.out.println();
     }
 }
 
 // dia compare element di pointer 1 dan 2
-// klo pointer 2 lebih tinggi, dia add ke res, 
+// klo pointer 2 lebih kecil, dia add ke res, pointer ++, break
+// klo pointer lebih kecil, dia add ke res, pointer ++

@@ -3,6 +3,7 @@ class Solutions {
         
     }
 
+}
 
     public static void debugIntArray(int[] array){
         for (int i : array) {
@@ -10,4 +11,3 @@ class Solutions {
         }
         System.out.println();
     }
-}

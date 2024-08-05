@@ -11,3 +11,10 @@ class Solutions {
         }
         System.out.println();
     }
+
+    public static void debugCharArray(char[] array){
+        for (char i : array) {
+            System.out.print(i + ",");
+        }
+        System.out.println();
+    }
